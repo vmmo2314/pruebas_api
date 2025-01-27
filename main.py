@@ -15,30 +15,17 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:8888",  # Para desarrollo
-        "https://footcareai.netlify.app",  # Dominio de producción
-        "https://conexioesp32.netlify.app"  # Dominio de germen
+        "https://footcareai.netlify.app"  # Dominio de producción
     ],
     allow_credentials=True,
     allow_methods=["*"],  # Permitir todos los métodos HTTP
     allow_headers=["*"],  # Permitir todos los encabezados
 )
 
-# Esquema de entrada para 14 características
+# Esquema de entrada
 class InputData(BaseModel):
     feature1: float
     feature2: float
-    feature3: float
-    feature4: float
-    feature5: float
-    feature6: float
-    feature7: float
-    feature8: float
-    feature9: float
-    feature10: float
-    feature11: float
-    feature12: float
-    feature13: float
-    feature14: float
 
 # Ruta de prueba
 @app.get("/")
@@ -48,14 +35,6 @@ def home():
 # Ruta para predicciones
 @app.post("/predict")
 def predict(data: InputData):
-    # Convertir los datos de entrada en un array de numpy
-    features = np.array([[
-        data.feature1, data.feature2, data.feature3, data.feature4,
-        data.feature5, data.feature6, data.feature7, data.feature8,
-        data.feature9, data.feature10, data.feature11, data.feature12,
-        data.feature13, data.feature14
-    ]])
-    
-    # Realizar la predicción
+    features = np.array([[data.feature1, data.feature2]])
     prediction = model.predict(features)
     return {"prediction": prediction[0]}
