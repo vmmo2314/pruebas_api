@@ -6,4 +6,4 @@ asyncio
 pickle-mixin
 supabase
 python-dotenv
-uvicorn apiFeet:app
+uvicorn
