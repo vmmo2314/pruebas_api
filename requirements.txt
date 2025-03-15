@@ -1,5 +1,6 @@
 fastapi
 pydantic
+xgboost
 numpy
 cachetools
 asyncio
