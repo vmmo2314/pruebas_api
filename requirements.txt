@@ -1,0 +1,10 @@
+fastapi
+pydantic
+numpy
+cachetools
+asyncio
+concurrent.futures
+pickle-mixin
+supabase
+python-dotenv
+uvicorn
